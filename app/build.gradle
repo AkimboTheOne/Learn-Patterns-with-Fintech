@@ -24,23 +24,23 @@ dependencies {
 }
 
 jar {
-    // Personaliza el nombre del JAR resultado
+    // Customize the resulting JAR name
     archiveBaseName.set('randomcode-patterns')
     archiveVersion.set(version)
     
-    // Main-Class en el MANIFEST
+    // Main-Class in the MANIFEST
     manifest {
         attributes(
             'Implementation-Title': 'RandomCode Design Patterns',
             'Implementation-Version': version,
-            'Main-Class': 'randomcode.patterns.creational.FactoryMethodPattern'
+            'Main-Class': 'randomcode.App'
         )
     }
 }
 
 // Application configuration
 application {
-    mainClass = 'randomcode.patterns.creational.FactoryMethodPattern'
+    mainClass = 'randomcode.App'
 }
 
 // Test configuration

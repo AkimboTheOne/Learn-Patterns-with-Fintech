@@ -3,12 +3,73 @@
  */
 package randomcode;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import randomcode.patterns.creational.AbstractFactoryPattern;
+import randomcode.patterns.creational.BuilderPattern;
+import randomcode.patterns.creational.FactoryMethodPattern;
+import randomcode.patterns.creational.ObjectPoolPattern;
+import randomcode.patterns.creational.PrototypePattern;
+import randomcode.patterns.creational.SingletonPattern;
+
 public class App {
+    private static final Logger logger = Logger.getLogger(App.class.getName());
+    
     public String getGreeting() {
-        return "Hello World!";
+        return "Welcome to Fintech Design Patterns Demo!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        App app = new App();
+        if (logger.isLoggable(Level.INFO)) {
+            logger.info(app.getGreeting());
+        }
+        
+        System.out.println(app.getGreeting());
+        System.out.println("=" .repeat(50));
+        
+        // Demonstrate all creational patterns
+        demonstrateCreationalPatterns();
+    }
+    
+    /**
+     * Demonstrate all implemented creational design patterns.
+     */
+    private static void demonstrateCreationalPatterns() {
+        System.out.println("\n🏭 FACTORY METHOD PATTERN");
+        System.out.println("-".repeat(30));
+        FactoryMethodPattern.main(new String[]{});
+        
+        System.out.println("\n🏭 ABSTRACT FACTORY PATTERN");
+        System.out.println("-".repeat(30));
+        AbstractFactoryPattern.main(new String[]{});
+        
+        System.out.println("\n🔒 SINGLETON PATTERN");
+        System.out.println("-".repeat(30));
+        SingletonPattern.main(new String[]{});
+        
+        System.out.println("\n🔨 BUILDER PATTERN");
+        System.out.println("-".repeat(30));
+        BuilderPattern.main(new String[]{});
+        
+        System.out.println("\n📋 PROTOTYPE PATTERN");
+        System.out.println("-".repeat(30));
+        PrototypePattern.main(new String[]{});
+        
+        System.out.println("\n🏊 OBJECT POOL PATTERN");
+        System.out.println("-".repeat(30));
+        try {
+            ObjectPoolPattern.main(new String[]{});
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            if (logger.isLoggable(Level.WARNING)) {
+                logger.warning("Object pool demonstration was interrupted");
+            }
+        }
+        
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("🎉 All Creational Patterns Demonstrated Successfully!");
+        System.out.println("=".repeat(50));
     }
 }
